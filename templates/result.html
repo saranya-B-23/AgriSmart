@@ -1,0 +1,42 @@
+<!-- templates/result.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="result-page">
+    <h2 class="section-title">📊 Quiz Result - Level {{ level }}</h2>
+
+    <div class="result-summary">
+        <p>👤 <strong>Player:</strong> {{ session['username'] }}</p>
+        <p>✅ <strong>Correct Answers:</strong> {{ score }}/10</p>
+        <p>💥 <strong>XP Earned:</strong> {{ xp_earned }} XP</p>
+
+        {% if new_level %}
+            <p>🎉 <strong>New Level:</strong> Level {{ new_level }}</p>
+        {% endif %}
+
+        {% if new_badges %}
+            <div class="badge-section">
+                <strong>🏅 Badges Unlocked:</strong>
+                {% for badge in new_badges %}
+                    <span class="badge">{{ badge }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="result-actions">
+        {% if next_level <= 5 %}
+        <form method="get" action="{{ url_for('quiz', level=next_level) }}">
+            <button type="submit" class="btn btn-primary">➡️ Continue to Level {{ next_level }}</button>
+        </form>
+        {% endif %}
+
+        <form method="get" action="{{ url_for('dashboard') }}">
+            <button type="submit" class="btn btn-secondary">🏠 Exit to Dashboard</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

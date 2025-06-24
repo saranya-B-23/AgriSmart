@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>📊 Dashboard</h2>
+    <p>👋 Welcome, <strong>{{ session['username'] }}</strong>!</p>
+
+    <hr>
+
+    <h3>🌾 Most Recommended Crop</h3>
+    <p>{{ most_common_crop if most_common_crop else "No predictions yet" }}</p>
+
+    <h3>🧪 Average Soil Nutrients</h3>
+    <ul>
+        <li>Nitrogen (N): {{ avg_n if avg_n is not none else "N/A" }}</li>
+        <li>Phosphorus (P): {{ avg_p if avg_p is not none else "N/A" }}</li>
+        <li>Potassium (K): {{ avg_k if avg_k is not none else "N/A" }}</li>
+    </ul>
+
+    <h3>📈 Total Predictions Made</h3>
+    <p>{{ total_predictions }}</p>
+
+    <hr>
+
+    <h3>🚀 Quick Links</h3>
+    <ul>
+        <li><a href="{{ url_for('predict') }}">🌱 Make a New Prediction</a></li>
+        <li><a href="{{ url_for('prediction_history') }}">📜 View Prediction History</a></li>
+        <li><a href="{{ url_for('tips_guides') }}">🌿 Agri Tips & Guides</a></li>
+        <li><a href="{{ url_for('crop_calendar') }}">🗓️ Crop Calendar</a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="section-title">{{ blog.title }}</h2>
+    <p class="section-subtitle">✍️ {{ blog.author }} | 🕒 {{ blog.timestamp.strftime('%b %d, %Y') }}</p>
+
+    <!-- ✅ Multi-line blog content fix -->
+    <div class="blog-content" style="white-space: pre-line; font-size: 18px; line-height: 1.6;">
+        {{ blog.content }}
+    </div>
+
+    <div class="blog-footer" style="margin-top: 20px;">
+        <form method="POST" action="{{ url_for('like_blog', blog_id=blog._id) }}">
+            <button type="submit" class="btn">👍 Like ({{ blog.likes }})</button>
+        </form>
+    </div>
+
+    <div class="comments" style="margin-top: 40px;">
+        <h3>💬 Comments</h3>
+        {% if blog.comments %}
+            {% for comment in blog.comments %}
+                <div class="comment" style="margin-bottom: 10px;">
+                    <strong>{{ comment.user }}</strong>: {{ comment.comment }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet. Be the first to reply!</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('add_comment', blog_id=blog._id) }}" style="margin-top: 20px;">
+            <textarea name="comment" placeholder="Your comment..." required class="form-textarea" rows="4" style="width: 100%; padding: 10px;"></textarea>
+            <button type="submit" class="btn comment-submit" style="margin-top: 10px;">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

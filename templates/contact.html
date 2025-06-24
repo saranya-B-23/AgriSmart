@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="contact-container">
+    <h2>📞 Contact Us – AgriSmart Project Team</h2>
+    <p>If you have any questions, suggestions, or feedback about our project, feel free to reach out to us using the form below or via our contact details.</p>
+
+    <hr>
+
+    <div class="team-section">
+        <h3>👩‍💻 Team Members</h3>
+        <ul>
+            <li><strong>Name:</strong> Saranya B</li>
+            <li><strong>Email:</strong> saranyab.cse2021@dscet.ac.in</li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/saranya-B-23" target="_blank">Profile</a></li>
+        </ul>
+        <ul>
+            <li><strong>Name:</strong> Samundeeswari D</li>
+            <li><strong>Email:</strong> samundeewaridcse2021@dscet.ac.in</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/samundeeswari-d-3bb010252/" target="_blank">Profile</a></li>
+        </ul>
+    </div>
+
+    <div class="guide-section">
+        <h3>🎓 Project Guide</h3>
+        <ul>
+            <li><strong>Name:</strong> Dhamini V</li>
+            <li><strong>Email:</strong> dhaminiv.cse@dscet.ac.in</li>
+            <li><strong>Department:</strong> CSE/AP</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="form-section">
+        <h3>📝 Send a Message</h3>
+
+        <!-- Flash message display -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('submit_contact') }}" method="POST" class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="message">Message:</label>
+            <textarea name="message" id="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <p class="quote">🌱 “Smart farming starts with smart communication.”</p>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+ENV/
+*.env
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# IDE/editor config
+.vscode/
+.idea/
+
+# Dataset and Model Files (Too Big for GitHub)
+data/
+soil_dataset/
+*.csv
+*.pkl
+*.h5
+*.zip
+
+# Static file uploads (user-generated)
+static/uploads/
+
+# Logs and system files
+*.log
+.DS_Store
+
+# Optional: hide credentials or API keys
+config.json
+secrets.json

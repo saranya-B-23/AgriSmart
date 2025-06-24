@@ -1,0 +1,1428 @@
+/* === RESET + BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fdf8;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
+}
+
+/* === NAVBAR === */
+.nav-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* === LOGO LEFT === */
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo-img {
+    height: 40px;
+    margin-right: 10px;
+}
+.logo-text {
+    font-weight: 700;
+    font-size: 22px;
+    color: #2e7d32;
+}
+
+/* === NAV LINKS RIGHT === */
+.nav-links ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+.nav-links li a:hover {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    width: 220px;
+    background-color: #f1f8e9;
+    padding: 20px 10px;
+    border-right: 1px solid #dcedc8;
+    overflow-y: auto;
+}
+.sidebar-menu li {
+    margin: 12px 0;
+}
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #2e7d32;
+    transition: background-color 0.2s;
+}
+.sidebar-menu li a:hover {
+    background-color: #d0f0c0;
+}
+.dropdown-menu {
+    margin-top: 5px;
+    margin-left: 20px;
+    display: none;
+    flex-direction: column;
+}
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+    margin-left: 0;
+    padding: 30px;
+    flex: 1;
+}
+.with-sidebar .main-content {
+    margin-left: 240px;
+}
+
+/* === FOOTER (Fixed if content short) === */
+.footer {
+    background-color: #e8f5e9;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    color: #555;
+    border-top: 1px solid #c8e6c9;
+    margin-top: auto;
+}
+
+/* === BUTTONS === */
+button,
+a.button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+button:hover,
+a.button:hover {
+    background-color: #388e3c;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .nav-links ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* === HERO BANNER SECTION === */
+.hero-banner {
+    text-align: center;
+    margin: 30px 0;
+}
+.hero-img {
+    max-width: 100%;
+    max-height: 400px;         /* ⬅️ limits tall images */
+    height: auto;
+    object-fit: cover;         /* ⬅️ makes sure it's nicely cropped */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* === HERO TEXT SECTION === */
+.hero {
+    text-align: center;
+    padding: 20px;
+}
+.hero h1 {
+    font-size: 2.5rem;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+.hero .btn {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+.hero .btn:hover {
+    background-color: #388e3c;
+}
+
+/* === FORM CONTAINER & SECTION TITLE === */
+/* === FINAL .form-container (Unified for all pages) === */
+.form-container {
+    max-width: 600px;  /* ✅ Modern standard width */
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border: 1px solid #dcedc8;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* === FLASH MESSAGES === */
+.flash {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.flash.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #f44336;
+}
+
+.flash.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #66bb6a;
+}
+
+/* === FORM GROUPS === */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4caf50;
+}
+
+/* === FORM BUTTON === */
+.form-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn.btn-primary {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.btn.btn-primary:hover {
+    background-color: #388e3c;
+}
+
+/* === FORM NOTE === */
+.form-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.form-note a {
+    color: #4caf50;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.form-note a:hover {
+    color: #388e3c;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 576px) {
+    .form-container {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* === HORIZONTAL GROUP (City + Weather Button) === */
+.horizontal-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.input-with-label {
+    flex: 1;
+}
+
+/* === SECONDARY BUTTON (Weather fetch) === */
+.btn.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+.btn.btn-secondary:hover {
+    background-color: #d5d5d5;
+}
+
+/* === Optional: Style numeric inputs for consistency === */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* === RESULT CONTAINER === */
+.result-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* === RESULT CARDS === */
+.result-card {
+    background-color: #f1f8e9;
+    border-left: 6px solid #4caf50;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.result-card h3 {
+    color: #2e7d32;
+    margin-bottom: 8px;
+}
+
+.result-card p,
+.result-card li {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* === NOTE / WARNING MESSAGE === */
+.note-message {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-left: 4px solid #ffc107;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+/* === BUTTON GROUP === */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+
+/* === HISTORY SECTION === */
+.history-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* === INDIVIDUAL HISTORY CARD === */
+.history-card {
+    background-color: #f9fdf8;
+    border-left: 5px solid #66bb6a;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.history-card p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* === COLLAPSIBLE DETAILS === */
+details {
+    margin-top: 12px;
+    padding-left: 8px;
+}
+details summary {
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 6px;
+    color: #2e7d32;
+}
+details ul {
+    padding-left: 20px;
+    margin-top: 6px;
+}
+details li {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+/* === RAINFALL WARNING === */
+.history-card em {
+    color: #d32f2f;
+    font-style: italic;
+}
+
+/* === EMPTY STATE === */
+.history-section p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+/* === ABOUT SECTION CONTAINER === */
+.about-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* === SECTION HEADINGS === */
+.about-section h2,
+.about-section h3 {
+    color: #2e7d32;
+    margin-bottom: 12px;
+}
+
+/* === STYLED LISTS === */
+.styled-list {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+.styled-list li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+.styled-list li::before {
+    content: '🌱';
+    position: absolute;
+    left: 0;
+}
+
+/* === STRONG TEXT === */
+.about-section strong {
+    color: #2e7d32;
+}
+
+/* === PARAGRAPHS === */
+.about-section p {
+    margin-bottom: 20px;
+}
+
+/* === CONTACT MESSAGES WRAPPER === */
+.admin-contact-messages {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-contact-messages h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* === MESSAGE TABLE === */
+.admin-contact-messages table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.admin-contact-messages th,
+.admin-contact-messages td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #c8e6c9;
+}
+
+.admin-contact-messages thead {
+    background-color: #e8f5e9;
+}
+
+.admin-contact-messages tbody tr:nth-child(even) {
+    background-color: #f9fdf8;
+}
+
+.admin-contact-messages tbody tr:hover {
+    background-color: #f1f8e9;
+}
+
+/* === EMPTY STATE === */
+.admin-contact-messages p {
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+/* === RESPONSIVE TABLE (optional) === */
+@media (max-width: 768px) {
+    .admin-contact-messages table,
+    .admin-contact-messages thead,
+    .admin-contact-messages tbody,
+    .admin-contact-messages th,
+    .admin-contact-messages td,
+    .admin-contact-messages tr {
+        display: block;
+    }
+
+    .admin-contact-messages thead {
+        display: none;
+    }
+
+    .admin-contact-messages td {
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .admin-contact-messages td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 12px;
+        font-weight: bold;
+        color: #4caf50;
+    }
+}
+
+/* === BLOG CONTAINER === */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* === TITLES & SUBTITLES === */
+.section-title {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* === BLOG SUBMISSION FORM === */
+.blog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-input,
+.form-textarea {
+    padding: 12px 14px;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    resize: vertical;
+}
+.form-input:focus,
+.form-textarea:focus {
+    border-color: #4caf50;
+}
+
+/* === BLOG GRID === */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* === INDIVIDUAL BLOG CARD === */
+.blog-card {
+    background-color: #f9fdf8;
+    border-left: 5px solid #66bb6a;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.blog-card p {
+    color: #444;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+.blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* === READ MORE LINK === */
+.read-more {
+    font-weight: 600;
+    color: #388e3c;
+    text-decoration: none;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* === EMPTY STATE === */
+.blog-grid + p {
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+}
+
+/* === BLOG DETAIL SECTION === */
+.blog-content {
+    background-color: #f9fdf8;
+    border-left: 5px solid #66bb6a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    white-space: pre-line;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* === BLOG FOOTER (LIKE BUTTON) === */
+.blog-footer {
+    margin-top: 20px;
+    text-align: left;
+}
+.blog-footer .btn {
+    background-color: #4caf50;
+    color: white;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+.blog-footer .btn:hover {
+    background-color: #388e3c;
+}
+
+/* === COMMENTS SECTION === */
+.comments {
+    margin-top: 40px;
+}
+
+.comments h3 {
+    color: #2e7d32;
+    margin-bottom: 16px;
+}
+
+.comment {
+    background-color: #ffffff;
+    padding: 12px 16px;
+    border-left: 4px solid #c8e6c9;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* === COMMENT SUBMIT === */
+.comment-submit {
+    background-color: #66bb6a;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+.comment-submit:hover {
+    background-color: #4caf50;
+}
+
+/* 🔹 Chatbot Section */
+#chat-box {
+    background-color: #f1fdf3;
+    border: 2px solid #cce5cc;
+    border-radius: 8px;
+    height: 350px;
+    overflow-y: auto;
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#chat-box p {
+    margin-bottom: 12px;
+}
+
+#chat-box p strong {
+    color: #1c7430;
+}
+
+#chat-box em {
+    color: #888;
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+}
+
+#user-input {
+    flex-grow: 1;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#chat-form button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#chat-form button:hover {
+    background-color: #218838;
+}
+
+.container h2 {
+    color: #1c7430;
+}
+
+.container small {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    #chat-box {
+        height: 300px;
+    }
+    #chat-form {
+        flex-direction: column;
+    }
+    #chat-form button {
+        width: 100%;
+    }
+}
+
+/* === CONTACT CONTAINER === */
+.contact-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* === SECTION HEADINGS === */
+.contact-container h2,
+.contact-container h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+/* === TEAM & GUIDE LISTS === */
+.team-section ul,
+.guide-section ul {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+.team-section li,
+.guide-section li {
+    margin-bottom: 6px;
+}
+.team-section a,
+.guide-section a {
+    color: #388e3c;
+    text-decoration: none;
+}
+.team-section a:hover,
+.guide-section a:hover {
+    text-decoration: underline;
+}
+
+/* === FORM STYLING === */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 14px;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #4caf50;
+}
+
+.contact-form button {
+    align-self: flex-start;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.contact-form button:hover {
+    background-color: #388e3c;
+}
+
+/* === ALERT MESSAGE (FLASH) === */
+.alert {
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #66bb6a;
+}
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef5350;
+}
+
+/* === QUOTE LINE === */
+.quote {
+    text-align: center;
+    margin-top: 30px;
+    font-style: italic;
+    color: #388e3c;
+    font-weight: 500;
+}
+
+/* === CALENDAR CONTAINER === */
+.calendar-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.calendar-container h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.calendar-container em {
+    color: #666;
+    font-style: italic;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* === SEASON BLOCKS === */
+.season-block {
+    margin-bottom: 30px;
+    background-color: #f9fdf8;
+    border-left: 6px solid #81c784;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.season-block h3 {
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+.season-block p {
+    margin-bottom: 10px;
+}
+.season-block ul {
+    padding-left: 20px;
+    margin-top: 8px;
+}
+.season-block li {
+    margin-bottom: 6px;
+}
+
+/* === NOTE BOX === */
+.note-box {
+    background-color: #fff3cd;
+    border-left: 6px solid #ffca28;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    color: #856404;
+    margin-top: 30px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .calendar-container {
+        padding: 20px;
+    }
+    .season-block,
+    .note-box {
+        padding: 16px;
+    }
+}
+
+/* === DASHBOARD CONTAINER === */
+.dashboard-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* === SECTION TITLES === */
+.dashboard-container h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.dashboard-container h3 {
+    color: #388e3c;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* === STATS & LISTS === */
+.dashboard-container ul {
+    padding-left: 20px;
+}
+.dashboard-container li {
+    margin-bottom: 8px;
+}
+
+/* === QUICK LINKS === */
+.dashboard-container ul a {
+    color: #388e3c;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.dashboard-container ul a:hover {
+    text-decoration: underline;
+    color: #2e7d32;
+}
+
+/* === DIVIDER === */
+.dashboard-container hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #c8e6c9;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .dashboard-container {
+        padding: 20px;
+    }
+}
+
+/* === FAQ CONTAINER === */
+.faq-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.faq-container h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.faq-container p {
+    margin-bottom: 20px;
+}
+.faq-container h3 {
+    color: #388e3c;
+    margin-top: 30px;
+    margin-bottom: 14px;
+}
+
+/* === FAQ ITEM === */
+.faq-item {
+    margin-bottom: 20px;
+}
+.faq-item strong {
+    display: block;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 6px;
+}
+.faq-item p {
+    margin-left: 10px;
+    color: #555;
+}
+
+/* === HORIZONTAL RULE === */
+.faq-container hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #c8e6c9;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .faq-container {
+        padding: 20px;
+    }
+}
+
+/* === QUIZ CONTAINER === */
+.quiz-home {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+.quiz-home h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* === LEVEL GRID === */
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* === LEVEL BUTTONS === */
+.level-grid button {
+    background-color: #4caf50;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.level-grid button:hover {
+    background-color: #388e3c;
+}
+.level-grid button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #777;
+}
+
+/* === QUIZ RESULT PAGE === */
+.result-page {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.result-page h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* === BADGES === */
+.badge {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 6px 14px;
+    margin: 6px 4px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* === ACTION BUTTONS === */
+.result-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.result-actions form button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+}
+
+.result-actions form button:hover {
+    background-color: #388e3c;
+}
+
+/* === TIPS & GUIDES CONTAINER === */
+.tips-guides-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* === PAGE HEADINGS === */
+.tips-guides-container h2 {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.tips-guides-container p {
+    margin-bottom: 16px;
+}
+
+/* === TOC / NAVIGATION BOX === */
+.toc {
+    background-color: #f1f8e9;
+    border-left: 6px solid #66bb6a;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.toc h4 {
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+.toc ul {
+    padding-left: 20px;
+}
+.toc li {
+    margin-bottom: 8px;
+}
+.toc a {
+    color: #388e3c;
+    font-weight: 500;
+    text-decoration: none;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+
+/* === CROP SECTIONS === */
+.crop-tips h3 {
+    color: #2e7d32;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.crop-tips ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+.crop-tips li {
+    margin-bottom: 6px;
+}
+
+/* === NOTE BOX === */
+.note-box {
+    background-color: #fff3cd;
+    border-left: 6px solid #ffca28;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    color: #856404;
+    margin-top: 30px;
+}
+
+/* === BACK TO TOP LINK === */
+.tips-guides-container a[href="#top"] {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #388e3c;
+    font-weight: 500;
+    text-decoration: none;
+}
+.tips-guides-container a[href="#top"]:hover {
+    text-decoration: underline;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .tips-guides-container {
+        padding: 20px;
+    }
+}
+
+/* === GUIDELINES CONTAINER === */
+.guidelines-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* === HEADINGS === */
+.guidelines-container h2 {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.guidelines-container h3 {
+    color: #388e3c;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* === INTRO TEXT === */
+.guidelines-container .intro {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* === SECTIONS === */
+.guidelines-container section {
+    margin-bottom: 25px;
+}
+
+/* === LIST STYLING === */
+.guidelines-container ul {
+    padding-left: 20px;
+}
+.guidelines-container li {
+    margin-bottom: 6px;
+}
+
+/* === TIP BOX === */
+.tip-box {
+    background-color: #f1f8e9;
+    border-left: 6px solid #66bb6a;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.tip-box h4 {
+    color: #2e7d32;
+    margin-bottom: 6px;
+}
+
+/* === START PREDICTION CTA === */
+.start-predict {
+    text-align: center;
+    margin-top: 30px;
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 10px;
+}
+.predict-button {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 12px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+.predict-button:hover {
+    background-color: #388e3c;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .guidelines-container {
+        padding: 20px;
+    }
+}
+/* === SUCCESS BUTTON (Soil fetch) === */
+.btn.btn-success {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid #a5d6a7;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+.btn.btn-success:hover {
+    background-color: #b2dfdb;
+}
+
+.icon {
+    vertical-align: middle;
+    margin-right: 6px;
+}
+/* user guidelines*/
+.city-list {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style-type: square;
+    padding-left: 20px;
+}

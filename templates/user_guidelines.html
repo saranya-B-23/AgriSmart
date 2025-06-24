@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="guidelines-container">
+    <h2>📌 AgriSmart – User Guidelines</h2>
+    <p class="intro">
+        Welcome! This guide explains how to provide accurate inputs for AgriSmart’s intelligent crop, fertilizer, pesticide, and water recommendations.
+    </p>
+
+    <!-- Soil Image Upload -->
+    <section>
+        <h3>🖼️ Upload Soil Image </h3>
+        <p>
+            AgriSmart automatically detects your soil type using AI image classification. From this, it estimates:
+        </p>
+        <ul>
+            <li><strong>Nitrogen (N)</strong></li>
+            <li><strong>Phosphorus (P)</strong></li>
+            <li><strong>Potassium (K)</strong></li>
+            <li><strong>Soil pH</strong></li>
+        </ul>
+        <p> <strong>You do not need to enter these values manually.</strong></p>
+        <p> Upload a clear photo of bare soil (avoid shadows, grass, stones, or blurry images).</p>
+    </section>
+
+    <!-- City Name -->
+    <section>
+        <h3>🏙️ City Name (For Weather Data)</h3>
+        <p>
+            The city name is used to fetch live weather data (temperature, humidity, rainfall) using the OpenWeather API.
+        </p>
+        <ul>
+            <li> Use full, correct spellings (e.g., <code>Coimbatore</code>, <code>Ahmedabad</code>)</li>
+            <li> Avoid nicknames or short forms (e.g., <code>cmbtr</code>, <code>bglr</code>)</li>
+            <li> For <strong>states</strong> or <strong>districts</strong>, use the capital or nearby major city</li>
+            <li> Use <a href="https://openweathermap.org/find" target="_blank">OpenWeather Find</a> to check spelling</li>
+        </ul>
+    </section>
+
+    <!-- Weather Auto-fill -->
+    <section>
+        <h3>🌦️ Weather Parameters (Auto-Filled)</h3>
+        <p>Once a valid city is entered, AgriSmart will automatically fetch:</p>
+        <ul>
+            <li><strong>🌡️ Temperature</strong> (°C)</li>
+            <li><strong>💧 Humidity</strong> (%)</li>
+            <li><strong>🌧️ Rainfall</strong> (mm)</li>
+        </ul>
+        <p> If the API fails (due to network or spelling error), you will see: <code>❌ Error fetching weather data: city not found</code></p>
+        <p> Try again with proper spelling or choose a nearby major city.</p>
+    </section>
+
+    <!-- Common City Names -->
+    <section>
+        <h3>📍 Common Supported Indian Cities</h3>
+        <p>Here are examples of cities that are officially supported by OpenWeather API (and verified to work):</p>
+        <ul class="city-list">
+            <li>Delhi</li>
+            <li>Mumbai</li>
+            <li>Chennai</li>
+            <li>Hyderabad</li>
+            <li>Bangalore</li>
+            <li>Kolkata</li>
+            <li>Ahmedabad</li>
+            <li>Pune</li>
+            <li>Coimbatore</li>
+            <li>Lucknow</li>
+            <li>Jaipur</li>
+            <li>Patna</li>
+            <li>Bhopal</li>
+            <li>Raipur</li>
+            <li>Thiruvananthapuram</li>
+            <li>Ranchi</li>
+            <li>Guwahati</li>
+            <li>Vijayawada</li>
+            <li>Chandigarh</li>
+        </ul>
+        <p>📝 You can search for your city here: <a href="https://openweathermap.org/find" target="_blank">https://openweathermap.org/find</a></p>
+    </section>
+
+    <!-- Tips -->
+    <section class="tip-box">
+        <h4>📝 Tip:</h4>
+        <p>
+            If you're unsure about any input, use the built-in <strong>AI Chatbot</strong> or consult your local <strong>KVK (Krishi Vigyan Kendra)</strong>.
+        </p>
+    </section>
+
+    <!-- Start Prediction -->
+    <div class="start-predict">
+        <p> Ready to get your recommendation? Click below:</p>
+        <a href="{{ url_for('predict') }}" class="predict-button">Start Prediction</a>
+    </div>
+</div>
+{% endblock %}

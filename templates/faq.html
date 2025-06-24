@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="faq-container">
+    <h2>❓ Frequently Asked Questions (FAQ)</h2>
+    <p>Welcome to the AgriSmart FAQ section. Here, we address common questions to help you navigate and utilize our platform effectively.</p>
+
+    <hr>
+
+    <h3>🌾 General Information</h3>
+    <div class="faq-item">
+        <strong>What is AgriSmart?</strong>
+        <p>AgriSmart is an intelligent agriculture assistant designed to provide crop recommendations, weather insights, and farming tips to enhance agricultural productivity.</p>
+    </div>
+    <div class="faq-item">
+        <strong>Who developed AgriSmart?</strong>
+        <p>AgriSmart was developed as a final year project by Saranya B and Samundeeswari D, under the guidance of Ms. Dhamini V.</p>
+    </div>
+
+    <hr>
+
+    <h3>🔐 Account Management</h3>
+    <div class="faq-item">
+        <strong>How do I create an account?</strong>
+        <p>Click on the 'Register' button on the homepage, fill in the required details, and submit the form to create your account.</p>
+    </div>
+    <div class="faq-item">
+        <strong>I forgot my password. What should I do?</strong>
+        <p>Currently, password recovery is not automated. Please contact our support team via the Contact Us page for assistance.</p>
+    </div>
+
+    <hr>
+
+    <h3>🌱 Crop Prediction</h3>
+    <div class="faq-item">
+        <strong>How does the crop prediction feature work?</strong>
+        <p>Our system uses a machine learning model that analyzes soil nutrients, temperature, humidity, pH, and rainfall to recommend the most suitable crops.</p>
+    </div>
+    <div class="faq-item">
+        <strong>Can I view my past predictions?</strong>
+        <p>Yes, navigate to the 'Prediction History' section after logging in to view your previous predictions.</p>
+    </div>
+    <div class="faq-item">
+        <strong>How do I provide soil data like N, P, K, and pH?</strong>
+        <p>In AgriSmart, you don't need to manually enter soil parameters. You simply upload an image of your soil, and our system uses simple CNN model to detect and autofill the Nitrogen (N), Phosphorus (P), Potassium (K), and pH values automatically. Make sure the soil image is clear and follows the <a href="{{ url_for('user_guidelines') }}">User Guidelines</a> for best results.</p>
+    </div>
+
+    <hr>
+
+    <h3>☁️ Weather Insights</h3>
+    <div class="faq-item">
+        <strong>How accurate is the weather data?</strong>
+        <p>We fetch real-time weather data from reliable APIs. In cases where rainfall data is unavailable or zero, we simulate realistic values to ensure comprehensive predictions.</p>
+    </div>
+    <div class="faq-item">
+        <strong>Why is rainfall data sometimes simulated?</strong>
+        <p>To maintain prediction accuracy, we simulate rainfall data when real-time data is missing or zero, ensuring the model has complete input parameters.</p>
+    </div>
+
+    <hr>
+
+    <h3>🧠 Chatbot Assistance</h3>
+    <div class="faq-item">
+        <strong>What can the chatbot help me with?</strong>
+        <p>Our chatbot can answer questions related to agriculture, provide farming tips, and guide you through using the AgriSmart platform.</p>
+    </div>
+    <div class="faq-item">
+        <strong>Is the chatbot available 24/7?</strong>
+        <p>Yes, the local chatbot is available at all times to assist you with your queries.</p>
+    </div>
+
+    <hr>
+
+    <h3>🎮 Gamification & Quizzes</h3>
+    <div class="faq-item">
+        <strong>What is the purpose of the quizzes?</strong>
+        <p>The quizzes are designed to test your agricultural knowledge and reward you with experience points (XP) and badges as you progress.</p>
+    </div>
+    <div class="faq-item">
+        <strong>How do I track my progress?</strong>
+        <p>Your progress, including XP and badges earned, can be viewed in the 'Gamification' section after logging in.</p>
+    </div>
+
+    <hr>
+
+    <h3>📬 Contact & Support</h3>
+    <div class="faq-item">
+        <strong>How can I contact the AgriSmart team?</strong>
+        <p>Visit our 'Contact Us' page to send us a message. We value your feedback and are here to assist you.</p>
+    </div>
+    <div class="faq-item">
+        <strong>Where can I find more resources?</strong>
+        <p>Explore our 'Tips & Guides', 'Crop Calendar', and 'User Guidelines' sections for additional information and resources.</p>
+    </div>
+</div>
+{% endblock %}

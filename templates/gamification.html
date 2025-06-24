@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="quiz-home">
+    <h2>🎮 Agri Quiz Levels</h2>
+    {% if session['username'] %}
+        <p>👤 Welcome, <strong>{{ session['username'] }}</strong>! Let's test your skills!</p>
+    {% endif %}
+
+    <div class="level-grid">
+        {% for level in range(1, 6) %}
+            <form method="get" action="{{ url_for('quiz', level=level) }}">
+                <button type="submit" {% if session.get('quiz_progress', 1) < level %}disabled{% endif %}>
+                    🔢 Level {{ level }}
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

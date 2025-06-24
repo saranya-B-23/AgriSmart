@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="result-container">
+    <h2 class="section-title">🌾 Prediction Result</h2>
+
+    <!-- Recommended Crop -->
+    <div class="result-card">
+        <h3> Recommended Crop:</h3>
+        <p><strong>{{ prediction['label'] }}</strong></p>
+    </div>
+
+    <!-- Weather Data -->
+    <div class="result-card">
+        <h3>🌦 Weather Conditions Used:</h3>
+        <ul>
+            <li><strong>City:</strong> {{ prediction['city'] }}</li>
+            <li><strong>Temperature:</strong> {{ prediction['temperature'] }} °C</li>
+            <li><strong>Humidity:</strong> {{ prediction['humidity'] }} %</li>
+            <li><strong>Rainfall:</strong> {{ prediction['rainfall'] }} mm</li>
+        </ul>
+        {% if prediction['rainfall'] == 0.0 %}
+            <p class="note-message">⚠ Rainfall was 0 mm — prediction made assuming dry conditions.</p>
+        {% endif %}
+    </div>
+
+    <!-- Soil Data (Only if available) -->
+    {% if prediction['soil_type'] %}
+    <div class="result-card">
+        <h3>🧬 Soil Analysis Used:</h3>
+        <ul>
+            <li><strong>N:</strong> {{ prediction['N'] }}</li>
+            <li><strong>P:</strong> {{ prediction['P'] }}</li>
+            <li><strong>K:</strong> {{ prediction['K'] }}</li>
+            <li><strong>pH:</strong> {{ prediction['pH'] }}</li>
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- Water Requirement -->
+    <div class="result-card">
+        <h3>💧 Water Requirement:</h3>
+        <p>{{ prediction['Water_Requirement'] }}</p>
+    </div>
+
+    <!-- Fertilizer & Pesticide Combined -->
+<div class="result-card">
+    <h3>🧪 Fertilizer & Pesticide:</h3>
+    <p>{{ prediction['Combined'] }}</p>
+</div>
+
+    <div class="button-group">
+        <a href="{{ url_for('predict') }}" class="btn btn-primary">🔁 Predict Again</a>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home</a>
+    </div>
+</div>
+{% endblock %}

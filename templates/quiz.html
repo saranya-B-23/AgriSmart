@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="quiz-container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h2>🧠 Agri Quiz - Level {{ level }}</h2>
+
+    {% if session['username'] %}
+        <p>👋 Welcome, <strong>{{ session['username'] }}</strong>!</p>
+    {% endif %}
+
+    <p>⏱️ Time Remaining: <span id="timer">05:00</span></p>
+
+    <form id="quiz-form" method="POST" action="{{ url_for('submit_quiz', level=level) }}">
+        {% for q in questions %}
+            {% set q_index = loop.index0 %}
+            <div class="question-block">
+                <p><strong>Q{{ loop.index }}: {{ q.q }}</strong></p>
+                {% for option in q.options %}
+                    <label>
+                        <input type="radio" name="q{{ q_index }}" value="{{ option }}" required>
+                        {{ option }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">✅ Submit Quiz</button>
+    </form>
+</div>
+
+<script>
+    let totalTime = 300; // 5 minutes
+    const startTimeFromServer = "{{ quiz_start_time | safe }}";
+    if (startTimeFromServer) {
+        try {
+            const serverTime = new Date(startTimeFromServer + "Z");
+            const now = new Date();
+            const elapsed = Math.floor((now - serverTime) / 1000);
+            totalTime -= elapsed;
+            if (isNaN(totalTime) || totalTime < 0) totalTime = 0;
+        } catch (err) {
+            console.warn("⚠️ Invalid datetime format received.");
+            totalTime = 300;
+        }
+    }
+
+    function startTimer() {
+        const timerEl = document.getElementById("timer");
+        const interval = setInterval(() => {
+            const minutes = Math.floor(totalTime / 60);
+            const seconds = totalTime % 60;
+            timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            totalTime--;
+
+            if (totalTime < 0) {
+                clearInterval(interval);
+                alert("⏳ Time's up! Auto-submitting...");
+                document.getElementById("quiz-form").submit();
+            }
+        }, 1000);
+    }
+
+    startTimer();
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="history-section">
+    <h2 class="section-title">🕒 Prediction History</h2>
+
+    {% if predictions %}
+        {% for item in predictions %}
+            <div class="history-card">
+                <!-- Top Summary -->
+                <p><strong>📅 Date:</strong> {{ item['timestamp'].strftime('%Y-%m-%d %A %I:%M %p') }}</p>
+                <p><strong>🌾 Recommended Crop:</strong> {{ item['result']['crop'] }}</p>
+                <p><strong>💧 Water Requirement:</strong> {{ item['result']['water'] }}</p>
+                <p><strong>🧪 Fertilizer & Pesticide:</strong> {{ item['result']['combined'] }}</p>
+
+                <!-- Input & Detection Details -->
+                <details>
+                    <summary>📊 Full Input & Detection Details</summary>
+                    <ul>
+                        <li><strong>🏙️ City:</strong> {{ item['inputs']['city'] }}</li>
+                        <li><strong>🌡️ Temperature:</strong> {{ item['inputs']['temperature'] }} °C</li>
+                        <li><strong>💧 Humidity:</strong> {{ item['inputs']['humidity'] }} %</li>
+                        <li><strong>🌧️ Rainfall:</strong> {{ item['inputs']['rainfall'] }} mm</li>
+                        <li><strong>🌿 Nitrogen (N):</strong> {{ item['inputs']['N'] }}</li>
+                        <li><strong>🌿 Phosphorus (P):</strong> {{ item['inputs']['P'] }}</li>
+                        <li><strong>🌿 Potassium (K):</strong> {{ item['inputs']['K'] }}</li>
+                        <li><strong>🧪 pH:</strong> {{ item['inputs']['ph'] }}</li>
+                    </ul>
+                </details>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No prediction history available.</p>
+    {% endif %}
+</div>
+{% endblock %}

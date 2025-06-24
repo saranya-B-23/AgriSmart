@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="calendar-container">
+    <h2>📅 AgriSmart – Crop Season Calendar</h2>
+    <p><em>Plan your farming year smartly with seasonal crop insights!</em></p>
+    <p>
+        This seasonal crop calendar serves as a guideline for farmers to understand which crops are most suitable for cultivation during different parts of the year based on traditional Indian agricultural practices.
+    </p>
+
+    <hr>
+
+    <section class="season-block">
+        <h3>🌦️ Kharif Season (June – October)</h3>
+        <p>
+            The Kharif season begins with the onset of the southwest monsoon. Crops in this season are sown with the arrival of rains and harvested at the end of the monsoon.
+        </p>
+        <ul>
+            <li><strong>Cereal Crops:</strong> Rice, Maize, Sorghum (Jowar), Pearl Millet (Bajra)</li>
+            <li><strong>Oilseeds:</strong> Groundnut, Soybean, Sesame</li>
+            <li><strong>Commercial Crops:</strong> Cotton, Sugarcane</li>
+            <li><strong>Vegetables/Fruits:</strong> Watermelon, Cucumber, Okra</li>
+        </ul>
+    </section>
+
+    <section class="season-block">
+        <h3>❄️ Rabi Season (October – March)</h3>
+        <p>
+            Rabi crops are sown after the monsoon, during the cooler months. These crops require less water and are harvested in spring.
+        </p>
+        <ul>
+            <li><strong>Cereal Crops:</strong> Wheat, Barley, Oats</li>
+            <li><strong>Pulses:</strong> Chickpea (Gram), Lentil, Pea</li>
+            <li><strong>Oilseeds:</strong> Mustard, Linseed</li>
+            <li><strong>Vegetables:</strong> Potato, Onion, Garlic, Carrot</li>
+        </ul>
+    </section>
+
+    <section class="season-block">
+        <h3>☀️ Zaid Season (March – June)</h3>
+        <p>
+            Zaid is the short cropping season between Rabi and Kharif. These crops are grown mostly under irrigation as rainfall is minimal.
+        </p>
+        <ul>
+            <li><strong>Fruits & Vegetables:</strong> Muskmelon, Watermelon, Bitter Gourd, Bottle Gourd</li>
+            <li><strong>Pulses:</strong> Mungbean (Green Gram), Cowpea</li>
+            <li><strong>Other Crops:</strong> Fodder Crops, Sunflower, Summer Maize</li>
+        </ul>
+    </section>
+
+    <section class="note-box">
+        <strong>📌 Note:</strong> Crop selection depends on local climate, soil type, and water availability. Farmers are advised to consult their nearest Krishi Vigyan Kendra (KVK) or agricultural officer for region-specific planning.
+    </section>
+
+</div>
+{% endblock %}
