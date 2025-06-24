@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from werkzeug.security import generate_password_hash
 
-MONGO_URI = "mongodb://admin:12345@127.0.0.1:27017/?authSource=admin"
+MONGO_URI = " " # your mongodb url
 client = MongoClient(MONGO_URI)
 
 db = client["Agri_db"]
