@@ -1,7 +1,7 @@
 # database/seed_quiz_levels.py
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://admin:12345@127.0.0.1:27017/?authSource=admin")
+client = MongoClient(" ") # mongdb url
 db = client["Agri_db"]
 quizzes = db["quizzes"]
 
